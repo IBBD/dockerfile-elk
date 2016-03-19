@@ -1,0 +1,53 @@
+#!/bin/bash
+
+usage() {
+    echo "$0 run   创建并运行容器"
+    echo "$0 exec  进入容器"
+    echo "$0 start 启动容器"
+    echo "$0 stop  停止容器"
+}
+
+if [ $# = 0 ]; then
+    usage
+    exit 1
+fi
+
+# 容器名称
+name=ibbd-es
+
+# 对外端口
+port=9200
+
+# 数据目录
+data=/data/esdata
+if [ ! -d "$data" ]; then
+    echo "$data is not exists!"
+    echo "Please create it first!"
+    exit 2
+fi
+
+case $1 in
+    run)
+        # es配置文件：/usr/share/elasticsearch/config
+        sudo docker run \
+            --detach \
+            --publish=$port:$port \
+            --volume="$data":/data \
+            --name="$name" \
+            ibbd/elasticsearch
+        ;;
+    exec)
+        sudo docker exec --interactive "$name" /bin/sh
+        ;;
+    start)
+        sudo docker start "$name"
+        ;;
+    stop)
+        sudo docker stop "$name"
+        ;;
+    *)
+        echo 'error params'
+        echo
+        usage
+        ;;
+esac
