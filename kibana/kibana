@@ -13,28 +13,20 @@ if [ $# = 0 ]; then
 fi
 
 # 容器名称
-name=ibbd-elasticsearch
+name=ibbd-kibana
 
 # 对外端口
-port=9200
+port=5601
 
-# 数据目录
-data=/data/esdata
-if [ ! -d "$data" ]; then
-    echo "$data is not exists!"
-    echo "Please create it first!"
-    exit 2
-fi
+# es url
+es_url="http://10.132.31.214:9200"
 
 case $1 in
     run)
-        # es配置文件：/usr/share/elasticsearch/config
-        sudo docker run \
-            --detach \
-            --publish=$port:$port \
-            --volume="$data":/data \
-            --name="$name" \
-            ibbd/elasticsearch
+        docker run --name "$name" \
+            -e ELASTICSEARCH_URL="$es_url" \
+            -p $port:$port \
+            -d ibbd/kibana
         ;;
     exec)
         sudo docker exec --interactive "$name" /bin/sh

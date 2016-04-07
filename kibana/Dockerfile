@@ -1,12 +1,12 @@
 #
-# ElasticSearch Dockerfile
+# Kibana Dockerfile
 #
-# https://github.com/ibbd/dockerfile-elk/elasticsearch
+# https://github.com/ibbd/dockerfile-elk/kibana
 #
 #
 
 # Pull base image.
-FROM elasticsearch:2.3.1
+FROM kibana:4.5
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
@@ -18,4 +18,4 @@ ENV TZ "Asia/Shanghai"
 ENV TERM xterm
 
 
-EXPOSE 9200
+EXPOSE 5601
