@@ -21,3 +21,8 @@ see: https://www.ttlsa.com/nginx/nginx-basic-http-authentication/
 
 文件：`/opt/kibana/src/ui/views/chrome.jade`
 
+### 4. 启动界面信息
+
+文件：`/opt/kibana/src/ui/views/ui_app.jade`
+
+
