@@ -2,6 +2,18 @@
 
 基于官方镜像进行构建。
 
+## 插件
+
+- heatmap：https://github.com/stormpython/heatmap 
+- Tag Cloud: https://github.com/stormpython/tagcloud
+- Radar: https://github.com/sirensolutions/kibi_radar_vis
+- Sankey Diagram: https://github.com/chenryn/kbn_sankey_vis 
+- Circles Packing Visualization: https://github.com/JuanCarniglia/kbn_circles_vis
+- https://github.com/raystorm-place/kibana-slider-plugin
+- https://github.com/raystorm-place/kibana-html-plugin
+- https://github.com/minewhat/es-csv-exporter
+- https://github.com/stormpython/vectormap
+
 ## 问题
 
 ### 1. 替换logo
