@@ -3,6 +3,10 @@
 # 复制繁体词典
 docker cp dict/big_chinese.dic ibbd-elasticsearch:/usr/share/elasticsearch/plugins/ik/config/ik/custom/
 
+if [ ! -d tmp ]; then 
+    mkdir tmp
+fi
+
 # 修改IK配置
 cnf_file=IKAnalyzer.cfg.xml
 docker cp ibbd-elasticsearch:/usr/share/elasticsearch/plugins/ik/config/ik/$cnf_file tmp/
