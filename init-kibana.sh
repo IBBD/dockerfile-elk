@@ -4,6 +4,8 @@
 # logo
 docker cp kibana/logo/favicon.ico ibbd-kibana:/opt/kibana/optimize/bundles/src/ui/public/images/elk.ico 
 docker cp kibana/logo/kibana.svg ibbd-kibana:/opt/kibana/optimize/bundles/src/ui/public/images/kibana.svg
+docker cp kibana/logo/favicon.ico ibbd-kibana:/opt/kibana/src/ui/public/images/elk.ico 
+docker cp kibana/logo/kibana.svg ibbd-kibana:/opt/kibana/src/ui/public/images/kibana.svg
 
 if [ ! -d tmp/ ]; then
     mkdir tmp
