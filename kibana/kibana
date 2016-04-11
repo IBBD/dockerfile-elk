@@ -26,7 +26,7 @@ case $1 in
         docker run --name "$name" \
             -e ELASTICSEARCH_URL="$es_url" \
             -p $port:$port \
-            -d ibbd/kibana
+            -d kibana
         ;;
     exec)
         sudo docker exec --interactive "$name" /bin/sh

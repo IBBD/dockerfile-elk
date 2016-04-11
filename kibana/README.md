@@ -4,9 +4,9 @@
 
 ## 插件
 
-- heatmap：https://github.com/stormpython/heatmap 
-- Tag Cloud: https://github.com/stormpython/tagcloud
-- Radar: https://github.com/sirensolutions/kibi_radar_vis
+- [x] heatmap：https://github.com/stormpython/heatmap 
+- [x] Tag Cloud: https://github.com/stormpython/tagcloud
+- [x] Radar: https://github.com/sirensolutions/kibi_radar_vis
 - Sankey Diagram: https://github.com/chenryn/kbn_sankey_vis 
 - Circles Packing Visualization: https://github.com/JuanCarniglia/kbn_circles_vis
 - https://github.com/raystorm-place/kibana-slider-plugin

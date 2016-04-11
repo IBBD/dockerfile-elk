@@ -1,7 +1,10 @@
 #!/bin/bash
+# data: /usr/share/elasticsearch/data
+# config: /usr/share/elasticsearch/config
+#  -Des.node.name="TestNode"
 
 usage() {
-    echo "$0 run   创建并运行容器"
+    echo "$0 run [node_name] 创建并运行容器, 节点名称默认为：IBBDEyeNode"
     echo "$0 exec  进入容器"
     echo "$0 start 启动容器"
     echo "$0 stop  停止容器"
@@ -14,6 +17,9 @@ fi
 
 # 容器名称
 name=ibbd-elasticsearch
+
+# es节点名称
+node_name_default=IBBDEyeNode
 
 # 对外端口
 port=9200
@@ -29,11 +35,18 @@ fi
 case $1 in
     run)
         # es配置文件：/usr/share/elasticsearch/config
+        if [ $# = 2 ]; then
+            node_name=$2
+        else
+            node_name=$node_name_default
+        fi
+
         sudo docker run \
             --detach \
             --publish=$port:$port \
-            --volume="$data":/data \
+            --volume="$data":/usr/share/elasticsearch/data \
             --name="$name" \
+            -Des.node.name="$node_name" \
             ibbd/elasticsearch
         ;;
     exec)
