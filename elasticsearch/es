@@ -46,8 +46,9 @@ case $1 in
             --publish=$port:$port \
             --volume="$data":/usr/share/elasticsearch/data \
             --name="$name" \
-            -Des.node.name="$node_name" \
-            ibbd/elasticsearch
+            ibbd/elasticsearch \
+            elasticsearch \
+            -Des.node.name="$node_name" 
         ;;
     exec)
         sudo docker exec --interactive "$name" /bin/sh
