@@ -32,11 +32,11 @@ case $1 in
             conf_file=logstash.conf
         fi
 
-        sudo docker run -d -rm \
+        sudo docker run -d \
             -v "$conf_dir":/config-dir \
             --name="$name" \
-            ibbd/logstash logstash \
-            -f /config-dir/"$conf_file"
+            ibbd/logstash \
+            logstash -f /config-dir/"$conf_file"
         ;;
     exec)
         sudo docker exec --interactive "$name" /bin/sh
