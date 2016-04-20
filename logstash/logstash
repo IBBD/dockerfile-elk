@@ -29,13 +29,13 @@ case $1 in
         if [ $# = 2 ]; then
             conf_file=$2
         else
-            conf_file=/config-dir/logstash.conf
+            conf_file=logstash.conf
         fi
 
-        sudo docker run -it --rm -v "$conf_dir":/config-dir \
+        sudo docker run -d -v "$conf_dir":/config-dir \
             --name="$name" \
             ibbd/logstash logstash \
-            -f "$conf_file"
+            -f /config-dir/"$conf_file"
         ;;
     exec)
         sudo docker exec --interactive "$name" /bin/sh
