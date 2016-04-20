@@ -1,0 +1,54 @@
+#!/bin/bash
+
+usage() {
+    echo "$0 run   创建并运行容器"
+    echo "$0 exec  进入容器"
+    echo "$0 start 启动容器"
+    echo "$0 stop  停止容器"
+}
+
+if [ $# = 0 ]; then
+    usage
+    exit 1
+fi
+
+# 容器名称
+name=ibbd-logstash
+
+# 配置目录
+conf_dir=/var/www/backend/logstash-conf
+if [ ! -d "$conf_dir" ]; then
+    echo "$conf_dir is not exists!"
+    echo "Please git clone from gitlib!"
+    exit 2
+fi
+
+case $1 in
+    run)
+        # es配置文件：/usr/share/elasticsearch/config
+        if [ $# = 2 ]; then
+            conf_file=$2
+        else
+            conf_file=/config-dir/logstash.conf
+        fi
+
+        sudo docker run -it --rm -v "$conf_dir":/config-dir \
+            --name="$name" \
+            ibbd/logstash logstash \
+            -f "$conf_file"
+        ;;
+    exec)
+        sudo docker exec --interactive "$name" /bin/sh
+        ;;
+    start)
+        sudo docker start "$name"
+        ;;
+    stop)
+        sudo docker stop "$name"
+        ;;
+    *)
+        echo 'error params'
+        echo
+        usage
+        ;;
+esac
