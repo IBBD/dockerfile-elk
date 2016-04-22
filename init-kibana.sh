@@ -39,6 +39,12 @@ str_replace "tmp/kibana.js" "title: 'Visualize'" "title: '可视化'"
 str_replace "tmp/kibana.js" "title: 'Dashboard'" "title: '仪表盘'"
 str_replace "tmp/kibana.js" "title: 'Settings'" "title: '设置'"
 docker cp tmp/kibana.js ibbd-kibana:/opt/kibana/src/plugins/kibana/public/kibana.js
+docker cp ibbd-kibana:/opt/kibana/optimize/bundles/kibana.bundle.js tmp/
+str_replace "tmp/kibana.bundle.js" "title: 'Discover'" "title: '搜索'"
+str_replace "tmp/kibana.bundle.js" "title: 'Visualize'" "title: '可视化'"
+str_replace "tmp/kibana.bundle.js" "title: 'Dashboard'" "title: '仪表盘'"
+str_replace "tmp/kibana.bundle.js" "title: 'Settings'" "title: '设置'"
+docker cp tmp/kibana.bundle.js ibbd-kibana:/opt/kibana/optimize/bundles/kibana.bundle.js
 
 # 复制插件安装程序到容器内
 docker cp install-kibana-plugin.sh ibbd-kibana:/root/
