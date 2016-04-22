@@ -40,10 +40,31 @@ str_replace "tmp/kibana.js" "title: 'Dashboard'" "title: '仪表盘'"
 str_replace "tmp/kibana.js" "title: 'Settings'" "title: '设置'"
 docker cp tmp/kibana.js ibbd-kibana:/opt/kibana/src/plugins/kibana/public/kibana.js
 docker cp ibbd-kibana:/opt/kibana/optimize/bundles/kibana.bundle.js tmp/
+
+# 修改导航
 str_replace "tmp/kibana.bundle.js" "title: 'Discover'" "title: '搜索'"
 str_replace "tmp/kibana.bundle.js" "title: 'Visualize'" "title: '可视化'"
 str_replace "tmp/kibana.bundle.js" "title: 'Dashboard'" "title: '仪表盘'"
 str_replace "tmp/kibana.bundle.js" "title: 'Settings'" "title: '设置'"
+
+# 翻译
+str_replace "tmp/kibana.bundle.js" "Create a new visualization" "创建新的可视化展示形式"
+str_replace "tmp/kibana.bundle.js" "Or, open a saved visualization" "打开一个已有的展示形式"
+
+# 修改图表类型
+str_replace "tmp/kibana.bundle.js" "title: 'Area chart'" "title: '堆叠区域图'"
+str_replace "tmp/kibana.bundle.js" "title: 'Data table'" "title: '数据表'"
+str_replace "tmp/kibana.bundle.js" "title: 'Heatmap'" "title: '热力图'"
+str_replace "tmp/kibana.bundle.js" "title: 'Html widget'" "title: 'HTML格式'"
+str_replace "tmp/kibana.bundle.js" "title: 'Line chart'" "title: '折线图'"
+str_replace "tmp/kibana.bundle.js" "title: 'Markdown widget'" "title: 'Markdown格式'"
+str_replace "tmp/kibana.bundle.js" "title: 'Mertric'" "title: '指标'"
+str_replace "tmp/kibana.bundle.js" "title: 'Pie chart'" "title: '饼图'"
+str_replace "tmp/kibana.bundle.js" "title: 'Radar chart'" "title: '雷达图'"
+str_replace "tmp/kibana.bundle.js" "title: 'Tag cloud'" "title: '词云'"
+str_replace "tmp/kibana.bundle.js" "title: 'Tie map'" "title: '地图'"
+str_replace "tmp/kibana.bundle.js" "title: 'Vertical bar chart'" "title: '柱形图'"
+
 docker cp tmp/kibana.bundle.js ibbd-kibana:/opt/kibana/optimize/bundles/kibana.bundle.js
 
 # 复制插件安装程序到容器内
