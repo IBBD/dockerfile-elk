@@ -30,6 +30,7 @@ docker cp tmp/chrome.jade ibbd-kibana:/opt/kibana/src/ui/views/chrome.jade
 docker cp ibbd-kibana:/opt/kibana/src/ui/views/ui_app.jade tmp/
 #sed -i "s/      strong Kibana/      strong EyeInsight/" tmp/ui_app.jade
 str_replace "tmp/ui_app.jade" "      strong Kibana" "      strong EyeInsight"
+str_replace "tmp/ui_app.jade" "is loading. Give me a moment here. I'm loading a whole bunch of code. Don't worry, all this good stuff will be cached up for next time!" "系统正在加载中，请稍候！如果是第一次启动，可能需要多一点点耐心。"
 docker cp tmp/ui_app.jade ibbd-kibana:/opt/kibana/src/ui/views/ui_app.jade
 
 # 替换导航菜单
