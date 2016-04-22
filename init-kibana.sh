@@ -70,7 +70,7 @@ str_replace "tmp/kibana.bundle.js" "Ready to get started" "准备开始建立仪
 str_replace "tmp/kibana.bundle.js" "Selected Fields" "选择字段"
 str_replace "tmp/kibana.bundle.js" "Available Fields" "可选择字段"
 str_replace "tmp/kibana.bundle.js" ">Popular<" ">字段列表<"
-str_replace "tmp/kibana.bundle.js" "This field is present in your elasticsearch mapping but not in any documents in the search results. You may still be able to visualize or search on it." "这个字段只会在mapping的配置文件中，而不会出现在搜索结果上。不过你依然可以看到它或者搜索它。"
+#str_replace "tmp/kibana.bundle.js" "This field is present in your elasticsearch mapping but not in any documents in the search results. You may still be able to visualize or search on it." "这个字段只会在mapping的配置文件中，而不会出现在搜索结果上。不过你依然可以看到它或者搜索它。"
 
 # 修改图表类型
 str_replace "tmp/kibana.bundle.js" "title: 'Area chart'" "title: '堆叠区域图'"
