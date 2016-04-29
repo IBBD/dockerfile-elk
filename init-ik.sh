@@ -24,7 +24,15 @@ then
     echo 'big_chinese.dic in '$cnf_file
 else
     sed -i 's/<entry key="ext_dict">/<entry key="ext_dict">custom\/big_chinese.dic;/' tmp/$cnf_file
-    docker cp tmp/$cnf_file ibbd-elasticsearch:/usr/share/elasticsearch/plugins/ik/config/ik/$cnf_file
 fi
 
+# 量词
+if grep quantifier.dic tmp/$cnf_file;
+then
+    echo 'quantifier.dic in '$cnf_file
+else
+    sed -i 's/<entry key="ext_stopwords">/<entry key="ext_stopwords">quantifier.dic;/' tmp/$cnf_file
+fi
+
+docker cp tmp/$cnf_file ibbd-elasticsearch:/usr/share/elasticsearch/plugins/ik/config/ik/$cnf_file
 echo '===> Over!!'
