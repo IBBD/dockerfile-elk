@@ -89,6 +89,8 @@ str_replace "tmp/kibana.bundle.js" "title: 'Radar chart'" "title: '雷达图'"
 str_replace "tmp/kibana.bundle.js" "title: 'Tag cloud'" "title: '词云'"
 str_replace "tmp/kibana.bundle.js" "title: 'Tile map'" "title: '地图'"
 str_replace "tmp/kibana.bundle.js" "title: 'Vertical bar chart'" "title: '柱形图'"
+str_replace "tmp/kibana.bundle.js" "<h1>Kibana<\/h1>" "<h1>EyeInsight<\/h1>"
+str_replace "tmp/kibana.bundle.js" "2015 All Rights Reserved - Elasticsearch" "2016 All Rights Reserved"
 
 docker cp tmp/kibana.bundle.js ibbd-kibana:/opt/kibana/optimize/bundles/kibana.bundle.js
 
