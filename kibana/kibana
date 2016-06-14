@@ -27,7 +27,7 @@ case $1 in
             -e ELASTICSEARCH_URL="$es_url" \
             -p $port:$port \
             -v /var/www:/var/www \
-            -d ibbd/kibana
+            -d kibana
         ;;
     exec)
         sudo docker exec --interactive "$name" /bin/sh
