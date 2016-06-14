@@ -9,7 +9,7 @@
 - [x] Radar: https://github.com/sirensolutions/kibi_radar_vis
 - [ ] HTML: https://github.com/raystorm-place/kibana-html-plugin
 - [x] Metric Color: 
-- Sankey Diagram: https://github.com/chenryn/kbn_sankey_vis 
+- [ ] Sankey Diagram（桑基图）: https://github.com/chenryn/kbn_sankey_vis 
 - Circles Packing Visualization: https://github.com/JuanCarniglia/kbn_circles_vis
 - https://github.com/raystorm-place/kibana-slider-plugin
 - https://github.com/minewhat/es-csv-exporter
@@ -50,6 +50,9 @@ bin/kibana plugin -i vectormap -u https://github.com/stormpython/vectormap/archi
 ```
 
 ### Sankey Diagram
+
+桑基图（Sankey diagram），即桑基能量分流图，也叫桑基能量平衡图。
+桑基图有利于展现分类维度间的相关性，以流的形式呈现共享同一类别的元素数量。特别适合表达集群的发展，比如展示特定群体的人数分布等。
 
 ```sh
 git clone https://github.com/chenryn/kbn_sankey_vis.git
