@@ -8,6 +8,7 @@
 - [x] Tag Cloud: https://github.com/stormpython/tagcloud
 - [x] Radar: https://github.com/sirensolutions/kibi_radar_vis
 - [ ] HTML: https://github.com/raystorm-place/kibana-html-plugin
+- [x] Metric Color: 
 - Sankey Diagram: https://github.com/chenryn/kbn_sankey_vis 
 - Circles Packing Visualization: https://github.com/JuanCarniglia/kbn_circles_vis
 - https://github.com/raystorm-place/kibana-slider-plugin
