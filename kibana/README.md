@@ -40,6 +40,8 @@ bin/kibana plugin -i metric-vis-colors -u https://github.com/oxalide/kibana_metr
 
 ### vectormap
 
+该插件有问题！
+
 ```sh
 bin/kibana plugin -i vectormap -u https://github.com/stormpython/vectormap/archive/master.zip
 ```
