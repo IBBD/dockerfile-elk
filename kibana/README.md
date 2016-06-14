@@ -7,7 +7,7 @@
 - [x] heatmap：https://github.com/stormpython/heatmap 
 - [x] Tag Cloud: https://github.com/stormpython/tagcloud
 - [x] Radar: https://github.com/sirensolutions/kibi_radar_vis
-- [x] HTML: https://github.com/raystorm-place/kibana-html-plugin
+- [ ] HTML: https://github.com/raystorm-place/kibana-html-plugin
 - Sankey Diagram: https://github.com/chenryn/kbn_sankey_vis 
 - Circles Packing Visualization: https://github.com/JuanCarniglia/kbn_circles_vis
 - https://github.com/raystorm-place/kibana-slider-plugin
@@ -20,6 +20,8 @@ cd /opt/kibana
 bin/kibana plugin -i heatmap -u https://github.com/stormpython/heatmap/archive/master.zip
 bin/kibana plugin -i tagcloud -u https://github.com/stormpython/tagcloud/archive/master.zip
 bin/kibana plugin -i kibi_radar_vis -u  https://github.com/sirensolutions/kibi_radar_vis/archive/0.1.0.zip
+
+# 安装有问题
 bin/kibana plugin -i kibana-html-plugin -u https://github.com/raystorm-place/kibana-html-plugin/archive/master.zip
 ```
 

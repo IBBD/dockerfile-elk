@@ -6,7 +6,7 @@
 #
 
 # Pull base image.
-FROM kibana:4.5.0
+FROM kibana:4.5.1
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
