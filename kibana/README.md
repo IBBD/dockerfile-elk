@@ -24,6 +24,9 @@ bin/kibana plugin -i kibi_radar_vis -u  https://github.com/sirensolutions/kibi_r
 
 # 安装有问题
 bin/kibana plugin -i kibana-html-plugin -u https://github.com/raystorm-place/kibana-html-plugin/archive/master.zip
+
+# 删除插件的方式
+bin/kibana plugin  --remove kbn_sankey_vis
 ```
 
 ### Kibana Colored Metric
