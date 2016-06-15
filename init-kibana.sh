@@ -3,10 +3,10 @@
 # 初始化kibana
 
 # logo
-docker cp kibana/logo/favicon.ico ibbd-kibana:/opt/kibana/optimize/bundles/src/ui/public/images/elk.ico 
-docker cp kibana/logo/kibana.svg ibbd-kibana:/opt/kibana/optimize/bundles/src/ui/public/images/kibana.svg
-docker cp kibana/logo/favicon.ico ibbd-kibana:/opt/kibana/src/ui/public/images/elk.ico 
-docker cp kibana/logo/kibana.svg ibbd-kibana:/opt/kibana/src/ui/public/images/kibana.svg
+#docker cp kibana/logo/favicon.ico ibbd-kibana:/opt/kibana/optimize/bundles/src/ui/public/images/elk.ico 
+#docker cp kibana/logo/kibana.svg ibbd-kibana:/opt/kibana/optimize/bundles/src/ui/public/images/kibana.svg
+#docker cp kibana/logo/favicon.ico ibbd-kibana:/opt/kibana/src/ui/public/images/elk.ico 
+#docker cp kibana/logo/kibana.svg ibbd-kibana:/opt/kibana/src/ui/public/images/kibana.svg
 
 if [ ! -d tmp/ ]; then
     mkdir tmp
@@ -80,10 +80,11 @@ str_replace "tmp/kibana.bundle.js" "Select an index pattern" "从下拉框选择
 str_replace "tmp/kibana.bundle.js" "title: 'Area chart'" "title: '堆叠区域图'"
 str_replace "tmp/kibana.bundle.js" "title: 'Data table'" "title: '数据表'"
 str_replace "tmp/kibana.bundle.js" "title: 'Heatmap'" "title: '热力图'"
-str_replace "tmp/kibana.bundle.js" "title: 'Html widget'" "title: 'HTML格式'"
+#str_replace "tmp/kibana.bundle.js" "title: 'Html widget'" "title: 'HTML格式'"
 str_replace "tmp/kibana.bundle.js" "title: 'Line chart'" "title: '折线图'"
 str_replace "tmp/kibana.bundle.js" "title: 'Markdown widget'" "title: 'Markdown格式'"
 str_replace "tmp/kibana.bundle.js" "title: 'Metric'" "title: '指标'"
+str_replace "tmp/kibana.bundle.js" "title: 'Metric with Colors'" "title: '彩色指标'"
 str_replace "tmp/kibana.bundle.js" "title: 'Pie chart'" "title: '饼图'"
 str_replace "tmp/kibana.bundle.js" "title: 'Radar chart'" "title: '雷达图'"
 str_replace "tmp/kibana.bundle.js" "title: 'Tag cloud'" "title: '词云'"
