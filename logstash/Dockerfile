@@ -6,7 +6,7 @@
 #
 
 # Pull base image.
-FROM logstash:2.3.1
+FROM logstash:2.3
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
