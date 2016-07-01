@@ -6,13 +6,14 @@
 #
 
 # Pull base image.
-FROM elasticsearch:2.3.1
+FROM elasticsearch:2.3
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # 安装插件
 # ElasticSearch IK for chinese
-ENV ELASTICSEARCH_IK_MAJOR 1.9.1
+# 注意检查版本：https://github.com/medcl/elasticsearch-analysis-ik
+ENV ELASTICSEARCH_IK_MAJOR 1.9.3
 ADD https://github.com/medcl/elasticsearch-analysis-ik/archive/v$ELASTICSEARCH_IK_MAJOR.tar.gz /tmp/elasticsearch-analysis-ik.tar.gz
 RUN apt-get update && \
     apt-get install -y --no-install-recommends --force-yes maven openjdk-8-jdk && \
