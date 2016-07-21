@@ -28,6 +28,10 @@ bin/kibana plugin -i kibana-html-plugin -u https://github.com/raystorm-place/kib
 # 删除插件的方式
 bin/kibana plugin  --remove kbn_sankey_vis
 ```
+# 地图更换
+#### 2016.07.21，系统自带地图的插件不能显示。
+#### 将src/ui/public/vislib/visualizations/_map.js文件12行的地图网址替换为高德地图http://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=7&x={x}&y={y}&z={z}
+
 
 ### Kibana Colored Metric
 
