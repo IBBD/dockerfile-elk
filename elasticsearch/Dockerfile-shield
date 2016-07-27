@@ -25,7 +25,7 @@ RUN apt-get update && \
     cd / && \
     rm -rf /tmp/elasticsearch-analysis-ik*
 
-＃　安装shield插件
+# 安装shield插件
 RUN plugin install license && plugin install shield
 
 # 安装  elasticsearch-head 插件
