@@ -1,7 +1,7 @@
 cluster.name: ibbd-es5
 network.host: 0.0.0.0
 node.name: "ibbd-es5-01"
-discovery.zen.ping.multicast.enabled: false
+#discovery.zen.ping.multicast.enabled: false
 discovery.zen.ping.unicast.hosts: ["10.28.233.211","10.168.161.41","10.6.89.52"]
 #index.number_of_replicas: 1
 #bootstrap.mlockall: true

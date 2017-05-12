@@ -23,9 +23,8 @@ RUN apt-get update && \
     mvn package && \
     unzip target/releases/elasticsearch-analysis-ik-$ELASTICSEARCH_IK_MAJOR.zip -d /usr/share/elasticsearch/plugins/ik && \
     cd / && \
-    rm -rf /tmp/elasticsearch-analysis-ik*
-
-RUN echo "vm.max_map_count=262144" >> /etc/sysctl.conf
+    rm -rf /tmp/elasticsearch-analysis-ik*  && \
+    echo "vm.max_map_count=262144" >> /etc/sysctl.conf
 
 # 解决时区问题
 ENV TZ "Asia/Shanghai"
