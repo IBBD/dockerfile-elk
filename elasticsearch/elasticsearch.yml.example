@@ -1,0 +1,11 @@
+cluster.name: ibbd-es5
+network.host: 0.0.0.0
+node.name: "ibbd-es5-01"
+discovery.zen.ping.multicast.enabled: false
+discovery.zen.ping.unicast.hosts: ["10.5.89.52","10.6.89.51","10.6.89.52"]
+index.number_of_replicas: 1
+#bootstrap.mlockall: true
+http.max_content_length: 500mb
+network.publish_host: 10.6.89.51
+http.cors.enabled: true
+http.cors.allow-origin: "*" 
