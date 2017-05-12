@@ -25,7 +25,7 @@ RUN apt-get update && \
     cd / && \
     rm -rf /tmp/elasticsearch-analysis-ik* 
     
-RUN echo 'vm.max_map_count=462144' >> /etc/sysctl.conf
+RUN  echo 'vm.max_map_count=462144' | tee -a /etc/sysctl.conf
 
 # 解决时区问题
 ENV TZ "Asia/Shanghai"
