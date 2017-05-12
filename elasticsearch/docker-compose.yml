@@ -7,6 +7,5 @@ elasticsearch:
     volumes:
         - /data/es:/usr/share/elasticsearch/data
         - /var/log/es:/usr/share/elasticsearch/logs
-        - elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro 
-    environment:
-        ES_HEAP_SIZE: "6g"
+        - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro 
+    
