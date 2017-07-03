@@ -1,0 +1,11 @@
+elasticsearch:
+    image: registry-internal.cn-hangzhou.aliyuncs.com/ibbd/elasticsearch
+    container_name: ibbd-elasticsearch   
+    ports:
+        - 9200:9200
+        - 9300:9300
+    volumes:
+        - /data/es:/usr/share/elasticsearch/data
+        - /var/log/es:/usr/share/elasticsearch/logs
+        - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro 
+    
