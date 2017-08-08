@@ -28,8 +28,8 @@ RUN apt-get update && \
 RUN  echo 'vm.max_map_count=462144' | tee -a /etc/sysctl.conf
 
 #  安装x-pack插件
-RUN  cd  /usr/share/elasticsearch    && \
-     bin/elasticsearch-plugin install x-pack
+#RUN  cd  /usr/share/elasticsearch    && \
+    #bin/elasticsearch-plugin install x-pack
 
 # 解决时区问题
 ENV TZ "Asia/Shanghai"
