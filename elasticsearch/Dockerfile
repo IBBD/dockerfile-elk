@@ -19,6 +19,9 @@ ENV IK_VERSION 5.5.1
 RUN cd /usr/share/elasticsearch \
     && ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip
 
+# ik自定配置文件
+ADD ./IKAnalyzer.cfg.xml /usr/share/elasticsearch/config/analysis-ik/IKAnalyzer.cfg.xml
+
 # 解决时区问题
 ENV TZ "Asia/Shanghai"
 
