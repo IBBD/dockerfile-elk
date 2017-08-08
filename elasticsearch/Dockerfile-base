@@ -6,7 +6,7 @@
 #
 
 # Pull base image.
-FROM elasticsearch:5.4.3
+FROM elasticsearch:5.4.0
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
