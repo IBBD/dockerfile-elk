@@ -16,7 +16,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 ENV IK_VERSION 5.5.1
 
 # install ik
-RUN cd /usr/share/kibana \
+RUN cd /usr/share/elasticsearch \
     && ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip
 
 # 解决时区问题
