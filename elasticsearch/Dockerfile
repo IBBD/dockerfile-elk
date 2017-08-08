@@ -14,21 +14,11 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # ElasticSearch IK for chinese
 # 注意检查版本：https://github.com/medcl/elasticsearch-analysis-ik
 ENV ELASTICSEARCH_IK_MAJOR 5.5.1
-ADD https://github.com/medcl/elasticsearch-analysis-ik/archive/v$ELASTICSEARCH_IK_MAJOR.tar.gz /tmp/elasticsearch-analysis-ik.tar.gz
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends --force-yes maven openjdk-8-jdk && \
-    rm -rf /var/lib/apt/lists/* && \
-    tar -xvf /tmp/elasticsearch-analysis-ik.tar.gz -C /tmp && \
-    cd /tmp/elasticsearch-analysis-ik-$ELASTICSEARCH_IK_MAJOR && \
-    mvn package && \
-    unzip target/releases/elasticsearch-analysis-ik-$ELASTICSEARCH_IK_MAJOR.zip -d /usr/share/elasticsearch/plugins/ik && \
-    cd / && \
-    rm -rf /tmp/elasticsearch-analysis-ik*
-# 安装  elasticsearch-head 插件
-#RUN  plugin install mobz/elasticsearch-head
 
-# 安装  elasticsearch-kopf 插件
-#RUN  plugin install lmenezes/elasticsearch-kopf
+# install ik
+RUN cd /usr/share/kibana \
+    && ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v5.5.1/elasticsearch-analysis-ik-5.5.1.zip
+
 # 解决时区问题
 ENV TZ "Asia/Shanghai"
 
