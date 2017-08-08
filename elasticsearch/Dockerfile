@@ -21,7 +21,7 @@ RUN cd /usr/share/elasticsearch \
     && ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip \
     && unzip /tmp/analysis-ik.zip -d /tmp/ik \
     && rm -rf plugins/analysis-ik \
-    && mv /tmp/ik plugins/analysis-ik \
+    && mv /tmp/ik/elasticsearch plugins/analysis-ik \
     && rm /tmp/analysis-ik.zip
 
 # 解决时区问题
