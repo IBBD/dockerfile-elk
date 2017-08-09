@@ -16,13 +16,14 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 ENV IK_VERSION 5.5.1
 
 # install ik
-ADD https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v5.5.1/elasticsearch-analysis-ik-5.5.1.zip /tmp/analysis-ik.zip
 RUN cd /usr/share/elasticsearch \
-    && ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip \
-    && unzip /tmp/analysis-ik.zip -d /tmp/ik \
-    && rm -rf plugins/analysis-ik \
-    && mv /tmp/ik/elasticsearch plugins/analysis-ik \
-    && rm /tmp/analysis-ik.zip
+    && ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip
+#ADD https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip /tmp/analysis-ik.zip
+#RUN cd /usr/share/elasticsearch \
+    #&& unzip /tmp/analysis-ik.zip -d /tmp/ik \
+    #&& rm -rf plugins/analysis-ik \
+    #&& mv /tmp/ik/elasticsearch plugins/analysis-ik \
+    #&& rm /tmp/analysis-ik.zip
 
 # 解决时区问题
 ENV TZ "Asia/Shanghai"
