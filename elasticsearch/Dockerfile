@@ -6,14 +6,14 @@
 #
 
 # Pull base image.
-FROM elasticsearch:5.5.1
+FROM elasticsearch:5.4.3
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # 安装插件
 # ElasticSearch IK for chinese
 # 注意检查版本：https://github.com/medcl/elasticsearch-analysis-ik
-ENV IK_VERSION 5.5.1
+ENV IK_VERSION 5.4.3
 
 # install ik
 RUN cd /usr/share/elasticsearch \
