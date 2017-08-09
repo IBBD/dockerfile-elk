@@ -6,14 +6,14 @@
 #
 
 # Pull base image.
-FROM elasticsearch:5.4.3
+FROM elasticsearch:5.5.1
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # 安装插件
 # ElasticSearch IK for chinese
 # 注意检查版本：https://github.com/medcl/elasticsearch-analysis-ik
-ENV IK_VERSION 5.4.3
+ENV IK_VERSION 5.5.1
 
 # install ik
 RUN cd /usr/share/elasticsearch \
@@ -24,6 +24,8 @@ RUN cd /usr/share/elasticsearch \
     #&& rm -rf plugins/analysis-ik \
     #&& mv /tmp/ik/elasticsearch plugins/analysis-ik \
     #&& rm /tmp/analysis-ik.zip
+    
+RUN  echo 'vm.max_map_count=462144' | tee -a /etc/sysctl.conf
 
 # 解决时区问题
 ENV TZ "Asia/Shanghai"
