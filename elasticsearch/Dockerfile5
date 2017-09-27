@@ -14,13 +14,16 @@ MAINTAINER Alex "cyy0523xc@gmail.com"
 # 需要root用户
 USER root
 
-#RUN yum update -y \
-    #&& yum install -y \
-        #unzip \
-    #&& yum clean all \
-    #&& rm -rf /var/cache/yum \
-RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+RUN yum update -y \
+    && yum install -y \
+        unzip \
+    && yum clean all \
+    && rm -rf /var/cache/yum \
+    && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo 'vm.max_map_count=462144' | tee -a /etc/sysctl.conf
+
+#RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    #&& echo 'vm.max_map_count=462144' | tee -a /etc/sysctl.conf
 
 # 切换回es用户
 USER elasticsearch
@@ -29,14 +32,14 @@ USER elasticsearch
 # ElasticSearch IK for chinese
 # 注意检查版本：https://github.com/medcl/elasticsearch-analysis-ik
 ENV IK_VERSION 5.4.3
-#ADD https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip /tmp/analysis-ik.zip
-#RUN mkdir -p /usr/share/elasticsearch/plugins/ik \
-    #&& unzip /tmp/analysis-ik.zip -d /usr/share/elasticsearch/plugins/ik \
-    #&& rm /tmp/analysis-ik.zip \
+ADD https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip /tmp/analysis-ik.zip
+RUN mkdir -p /usr/share/elasticsearch/plugins/ik \
+    && unzip /tmp/analysis-ik.zip -d /usr/share/elasticsearch/plugins/ik \
+    && rm /tmp/analysis-ik.zip
 
-USER elasticsearch
-RUN elasticsearch-plugin install --batch \
-    https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip
+#USER elasticsearch
+#RUN elasticsearch-plugin install --batch \
+    #https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip
 
 # 解决时区问题
 ENV TZ "Asia/Shanghai"
