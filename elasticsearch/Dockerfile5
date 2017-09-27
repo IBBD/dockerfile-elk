@@ -28,11 +28,10 @@ ENV IK_VERSION 5.4.3
 ADD https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip /tmp/analysis-ik.zip
 RUN mkdir -p /usr/share/elasticsearch/plugins/ik \
     && unzip /tmp/analysis-ik.zip -d /usr/share/elasticsearch/plugins/ik \
-    && chmod -R elasticsearch:elasticsearch /usr/share/elasticsearch/plugins \
     && rm /tmp/analysis-ik.zip
 
 # 切换回es用户
-USER elasticsearch
+USER root
 
 # 解决时区问题
 ENV TZ "Asia/Shanghai"
