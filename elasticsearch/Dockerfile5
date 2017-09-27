@@ -25,20 +25,12 @@ RUN yum update -y \
 #RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     #&& echo 'vm.max_map_count=462144' | tee -a /etc/sysctl.conf
 
-# 切换回es用户
-USER elasticsearch
-
 # 安装插件
 # ElasticSearch IK for chinese
 # 注意检查版本：https://github.com/medcl/elasticsearch-analysis-ik
 ENV IK_VERSION 5.4.3
 
-# 切换回es用户
-USER elasticsearch
 ADD https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip /tmp/analysis-ik.zip
-
-# 切换回es用户
-USER elasticsearch
 RUN mkdir -p /usr/share/elasticsearch/plugins/ik \
     && unzip /tmp/analysis-ik.zip -d /usr/share/elasticsearch/plugins/ik \
     && rm /tmp/analysis-ik.zip
@@ -46,6 +38,9 @@ RUN mkdir -p /usr/share/elasticsearch/plugins/ik \
 #USER elasticsearch
 #RUN elasticsearch-plugin install --batch \
     #https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip
+
+# 切换回es用户
+USER elasticsearch
 
 # 解决时区问题
 ENV TZ "Asia/Shanghai"
