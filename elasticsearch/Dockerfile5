@@ -32,7 +32,13 @@ USER elasticsearch
 # ElasticSearch IK for chinese
 # 注意检查版本：https://github.com/medcl/elasticsearch-analysis-ik
 ENV IK_VERSION 5.4.3
+
+# 切换回es用户
+USER elasticsearch
 ADD https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip /tmp/analysis-ik.zip
+
+# 切换回es用户
+USER elasticsearch
 RUN mkdir -p /usr/share/elasticsearch/plugins/ik \
     && unzip /tmp/analysis-ik.zip -d /usr/share/elasticsearch/plugins/ik \
     && rm /tmp/analysis-ik.zip
