@@ -5,21 +5,19 @@
 #
 
 # Pull base image.
-FROM elasticsearch:5.4.3
-#FROM docker.elastic.co/elasticsearch/elasticsearch:5.4.3
+#FROM elasticsearch:5.4.3
+FROM docker.elastic.co/elasticsearch/elasticsearch:5.4.3
 
 MAINTAINER Alex "cyy0523xc@gmail.com"
 
 # 需要root用户
 USER root
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-    && apt-get install -y \
+RUN yum update -y \
+    && yum install -y \
         unzip \
-    && apt-get autoremove \
-    && apt-get autoclean \
-    && rm -rf /var/lib/apt/lists/* \
+    && yum clean all \
+    && rm -rf /var/cache/yum \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo 'vm.max_map_count=262144' | tee -a /etc/sysctl.conf
 
@@ -31,8 +29,7 @@ ENV IK_VERSION 5.4.3
 ADD https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip /tmp/analysis-ik.zip
 RUN mkdir -p /usr/share/elasticsearch/plugins/ik \
     && unzip /tmp/analysis-ik.zip -d /usr/share/elasticsearch/plugins/ik \
-    && chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/plugins \
-    && chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/logs \
+    && chown -R elasticsearch:elasticsearch /usr/share/elasticsearch \
     && rm /tmp/analysis-ik.zip
 
 # 切换回es用户
