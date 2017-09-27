@@ -18,6 +18,7 @@ ENV IK_VERSION 5.4.3
 ADD https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip /tmp/analysis-ik.zip
 RUN mkdir -p /usr/share/elasticsearch/plugins/ik \
     && unzip /tmp/analysis-ik.zip -d /usr/share/elasticsearch/plugins/ik \
+    && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 RUN  echo 'vm.max_map_count=462144' | tee -a /etc/sysctl.conf
 
