@@ -35,7 +35,8 @@ ENV IK_VERSION 5.4.3
     #&& rm /tmp/analysis-ik.zip \
 
 USER elasticsearch
-RUN elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip
+RUN elasticsearch-plugin install --batch \
+    https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip
 
 # 解决时区问题
 ENV TZ "Asia/Shanghai"
