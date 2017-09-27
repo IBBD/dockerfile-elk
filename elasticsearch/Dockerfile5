@@ -3,7 +3,6 @@
 #
 # https://github.com/ibbd/dockerfile-elk/elasticsearch
 #
-#
 
 # Pull base image.
 #FROM elasticsearch:5.4.3
@@ -22,22 +21,14 @@ RUN yum update -y \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo 'vm.max_map_count=462144' | tee -a /etc/sysctl.conf
 
-#RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-    #&& echo 'vm.max_map_count=462144' | tee -a /etc/sysctl.conf
-
 # 安装插件
 # ElasticSearch IK for chinese
 # 注意检查版本：https://github.com/medcl/elasticsearch-analysis-ik
 ENV IK_VERSION 5.4.3
-
 ADD https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip /tmp/analysis-ik.zip
 RUN mkdir -p /usr/share/elasticsearch/plugins/ik \
     && unzip /tmp/analysis-ik.zip -d /usr/share/elasticsearch/plugins/ik \
     && rm /tmp/analysis-ik.zip
-
-#USER elasticsearch
-#RUN elasticsearch-plugin install --batch \
-    #https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip
 
 # 切换回es用户
 USER elasticsearch
