@@ -21,6 +21,7 @@ fi
 for path in \
     /usr/share/elasticsearch/data \
     /usr/share/elasticsearch/logs \
+    /usr/share/elasticsearch/config \
     ; do
     if [ -d "$path" ]; then
         echo "change $path to elasticsearch"
