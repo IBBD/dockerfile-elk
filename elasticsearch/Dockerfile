@@ -17,4 +17,6 @@ ADD https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VE
 RUN mkdir -p /usr/share/elasticsearch/plugins/ik \
     && unzip /tmp/analysis-ik.zip -d /usr/share/elasticsearch/plugins/ik \
     && chown -R elasticsearch:elasticsearch /usr/share/elasticsearch \
-    && rm /tmp/analysis-ik.zip
+    && rm /tmp/analysis-ik.zip \
+    && cd /usr/share/elasticsearch \
+    && ./bin/elasticsearch-plugin remove x-pack || true
