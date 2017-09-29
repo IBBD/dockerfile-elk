@@ -29,7 +29,12 @@ RUN apt-get update \
     && rm -r /var/lib/apt/lists/* \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo 'vm.max_map_count=262144' | tee -a /etc/sysctl.conf \
-    && chown -R elasticsearch:elasticsearch /usr/share/elasticsearch 
+
+# 工作目录
+WORKDIR /usr/share/elasticsearch
+
+# 配置文件
+COPY config /usr/share/elasticsearch/config
 
 # grab gosu for easy step-down from root
 ENV GOSU_VERSION 1.10
@@ -49,19 +54,14 @@ RUN set -x \
         wget \
     && apt-get autoremove -y \
     && apt-get clean \
-    && rm -r /var/lib/apt/lists/*
-
-# 工作目录
-WORKDIR /usr/share/elasticsearch
+    && rm -r /var/lib/apt/lists/* \
+    && chown -R elasticsearch:elasticsearch /usr/share/elasticsearch 
 
 # 解决时区问题
 ENV TZ "Asia/Shanghai"
 
 # 终端设置
 ENV TERM xterm
-
-# 配置文件
-COPY config ./config
 
 VOLUME /usr/share/elasticsearch/data
 
