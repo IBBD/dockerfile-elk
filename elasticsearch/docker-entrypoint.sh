@@ -6,7 +6,7 @@
 set -e
 
 # remove x-pack
-./bin/elasticsearch-plugin remove x-pack || true
+/usr/share/elasticsearch/bin/elasticsearch-plugin remove x-pack || true
 
 # As argument is not related to elasticsearch,
 # then assume that user wants to run his own process,
