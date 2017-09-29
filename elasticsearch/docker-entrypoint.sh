@@ -10,6 +10,13 @@ if [ "${1:0:1}" = '-' ]; then
     set -- elasticsearch "$@"
 fi
 
+if [ "$(id -u)" = '0' ]; then
+    echo "root is ok"
+else
+    echo "You must run by root!"
+    exit 1
+fi
+
 # Change the ownership of user-mutable directories to elasticsearch
 for path in \
     /usr/share/elasticsearch/data \
@@ -21,12 +28,8 @@ for path in \
     fi
 done
 
-# Drop root privileges if we are running elasticsearch
-# allow the container to be started with `--user`
-if [ "$1" = 'elasticsearch' -a "$(id -u)" = '0' ]; then
-    set -- gosu elasticsearch "$@"
-    #exec gosu elasticsearch "$BASH_SOURCE" "$@"
-fi
+# 使用特定的用户运行
+set -- gosu elasticsearch "$@"
 
 # As argument is not related to elasticsearch,
 # then assume that user wants to run his own process,
