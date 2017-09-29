@@ -10,9 +10,6 @@ if [ "${1:0:1}" = '-' ]; then
 	set -- elasticsearch "$@"
 fi
 
-# Drop root privileges if we are running elasticsearch
-# allow the container to be started with `--user`
-if [ "$1" = 'elasticsearch' -a "$(id -u)" = '0' ]; then
 	# Change the ownership of user-mutable directories to elasticsearch
 	for path in \
 		/usr/share/elasticsearch/data \
@@ -22,6 +19,9 @@ if [ "$1" = 'elasticsearch' -a "$(id -u)" = '0' ]; then
 		chown -R elasticsearch:elasticsearch "$path"
 	done
 	
+# Drop root privileges if we are running elasticsearch
+# allow the container to be started with `--user`
+if [ "$1" = 'elasticsearch' -a "$(id -u)" = '0' ]; then
 	set -- gosu elasticsearch "$@"
 	#exec gosu elasticsearch "$BASH_SOURCE" "$@"
 fi
