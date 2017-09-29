@@ -18,6 +18,7 @@ if [ "$1" = 'elasticsearch' -a "$(id -u)" = '0' ]; then
 		/usr/share/elasticsearch/data \
 		/usr/share/elasticsearch/logs \
 	; do
+        echo "change $path to elasticsearch"
 		chown -R elasticsearch:elasticsearch "$path"
 	done
 	
