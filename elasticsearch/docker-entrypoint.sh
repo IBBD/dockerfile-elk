@@ -6,7 +6,13 @@
 set -e
 
 # remove x-pack
-/usr/share/elasticsearch/bin/elasticsearch-plugin remove x-pack || true
+if 
+    elasticsearch-plugin list|grep x-pack;
+then
+    elasticsearch-plugin remove x-pack || true
+else
+    echo "x-pack is not installed."
+fi
 
 # As argument is not related to elasticsearch,
 # then assume that user wants to run his own process,
