@@ -4,7 +4,8 @@
 # https://github.com/ibbd/dockerfile-elk/elasticsearch
 #
 
-FROM openjdk:8-slim
+#FROM openjdk:8-slim
+FROM openjdk:8-jre
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
