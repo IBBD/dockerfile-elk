@@ -3,12 +3,26 @@
 #
 # https://github.com/ibbd/dockerfile-elk/elasticsearch
 #
-#
 
-# Pull base image.
-FROM elasticsearch:5.4.0
+FROM openjdk:8-slim
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
+
+ENV ES_VERSION 5.4.3
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        wget \
+    && wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-$ES_VERSION.deb \
+    && sha1sum elasticsearch-$ES_VERSION.deb \
+    && dpkg -i elasticsearch-$ES_VERSION.deb \
+    && apt-get remove -y \
+        wget \
+    && apt-get autoremove -y \
+    && apt-get clean \
+    && rm -r /var/lib/apt/lists/* \
+    && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo 'vm.max_map_count=262144' | tee -a /etc/sysctl.conf
 
 # 解决时区问题
 ENV TZ "Asia/Shanghai"
@@ -16,6 +30,5 @@ ENV TZ "Asia/Shanghai"
 # 终端设置
 ENV TERM xterm
 
-
-EXPOSE 9200
 EXPOSE 9300
+EXPOSE 9200
