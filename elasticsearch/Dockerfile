@@ -6,7 +6,7 @@
 #
 
 # Pull base image.
-FROM registry.cn-hangzhou.aliyuncs.com/ibbd/elasticsearch:base
+FROM ibbd/elasticsearch:base
 
 # 安装插件
 # ElasticSearch IK for chinese
@@ -18,5 +18,4 @@ RUN mkdir -p /usr/share/elasticsearch/plugins/ik \
     && unzip /tmp/analysis-ik.zip -d /usr/share/elasticsearch/plugins/ik \
     && chown -R elasticsearch:elasticsearch /usr/share/elasticsearch \
     && rm /tmp/analysis-ik.zip \
-    && cd /usr/share/elasticsearch \
-    && ./bin/elasticsearch-plugin remove x-pack || true
+    && cd /usr/share/elasticsearch
