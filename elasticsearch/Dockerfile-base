@@ -10,6 +10,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 ENV ES_VERSION 5.4.3
 ENV ES_FILE elasticsearch-$ES_VERSION.deb
+ENV PATH /usr/share/elasticsearch/bin:$PATH
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
