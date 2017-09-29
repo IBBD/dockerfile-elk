@@ -39,3 +39,6 @@ ENV TERM xterm
 
 EXPOSE 9300
 EXPOSE 9200
+
+COPY docker-entrypoint.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]
