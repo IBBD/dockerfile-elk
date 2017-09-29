@@ -7,23 +7,25 @@ set -e
 
 # Add elasticsearch as command if needed
 if [ "${1:0:1}" = '-' ]; then
-	set -- elasticsearch "$@"
+    set -- elasticsearch "$@"
 fi
 
-	# Change the ownership of user-mutable directories to elasticsearch
-	for path in \
-		/usr/share/elasticsearch/data \
-		/usr/share/elasticsearch/logs \
-	; do
+# Change the ownership of user-mutable directories to elasticsearch
+for path in \
+    /usr/share/elasticsearch/data \
+    /usr/share/elasticsearch/logs \
+    ; do
+    if [ -d "$path" ]; then
         echo "change $path to elasticsearch"
-		chown -R elasticsearch:elasticsearch "$path"
-	done
-	
+        chown -R elasticsearch:elasticsearch "$path"
+    fi
+done
+
 # Drop root privileges if we are running elasticsearch
 # allow the container to be started with `--user`
 if [ "$1" = 'elasticsearch' -a "$(id -u)" = '0' ]; then
-	set -- gosu elasticsearch "$@"
-	#exec gosu elasticsearch "$BASH_SOURCE" "$@"
+    set -- gosu elasticsearch "$@"
+    #exec gosu elasticsearch "$BASH_SOURCE" "$@"
 fi
 
 # As argument is not related to elasticsearch,
