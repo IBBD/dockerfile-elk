@@ -38,9 +38,7 @@ ADD config/log4j2.properties /usr/share/elasticsearch/config/log4j2.properties
 ADD config/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
 
 # 处理运行用户
-RUN groupadd -g 1000 elasticsearch \
-    && adduser -u 1000 -g 1000 -d /usr/share/elasticsearch elasticsearch \
-    && chown -R elasticsearch:elasticsearch /usr/share/elasticsearch 
+RUN chown -R elasticsearch:elasticsearch /usr/share/elasticsearch 
 
 USER elasticsearch
 
