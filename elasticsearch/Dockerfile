@@ -6,33 +6,15 @@
 #
 
 # Pull base image.
-FROM elasticsearch:5.5.1
-
-MAINTAINER Alex Cai "cyy0523xc@gmail.com"
+FROM registry.cn-hangzhou.aliyuncs.com/ibbd/elasticsearch:base
 
 # 安装插件
 # ElasticSearch IK for chinese
 # 注意检查版本：https://github.com/medcl/elasticsearch-analysis-ik
-ENV IK_VERSION 5.5.1
-
-# install ik
-RUN cd /usr/share/elasticsearch \
-    && ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip
-#ADD https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip /tmp/analysis-ik.zip
-#RUN cd /usr/share/elasticsearch \
-    #&& unzip /tmp/analysis-ik.zip -d /tmp/ik \
-    #&& rm -rf plugins/analysis-ik \
-    #&& mv /tmp/ik/elasticsearch plugins/analysis-ik \
-    #&& rm /tmp/analysis-ik.zip
-    
-RUN  echo 'vm.max_map_count=462144' | tee -a /etc/sysctl.conf
-
-# 解决时区问题
-ENV TZ "Asia/Shanghai"
-
-# 终端设置
-ENV TERM xterm
-
-
-EXPOSE 9200
-EXPOSE 9300
+# BUG：需要修改/usr/share/elasticsearch/logs目录用户
+ENV IK_VERSION 5.4.3
+ADD https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v$IK_VERSION/elasticsearch-analysis-ik-$IK_VERSION.zip /tmp/analysis-ik.zip
+RUN mkdir -p /usr/share/elasticsearch/plugins/ik \
+    && unzip /tmp/analysis-ik.zip -d /usr/share/elasticsearch/plugins/ik \
+    && chown -R elasticsearch:elasticsearch /usr/share/elasticsearch \
+    && rm /tmp/analysis-ik.zip
