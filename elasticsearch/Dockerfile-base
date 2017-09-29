@@ -9,13 +9,15 @@ FROM openjdk:8-slim
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 ENV ES_VERSION 5.4.3
+ENV ES_FILE elasticsearch-$ES_VERSION.deb
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         wget \
-    && wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-$ES_VERSION.deb \
-    && sha1sum elasticsearch-$ES_VERSION.deb \
-    && dpkg -i elasticsearch-$ES_VERSION.deb \
+    && wget https://artifacts.elastic.co/downloads/elasticsearch/$ES_FILE \
+    && sha1sum $ES_FILE \
+    && dpkg -i $ES_FILE \
+    && rm $ES_FILE \
     && apt-get remove -y \
         wget \
     && apt-get autoremove -y \
